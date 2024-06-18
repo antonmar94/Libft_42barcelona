@@ -6,7 +6,7 @@
 /*   By: antonio- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 18:06:15 by antonio-          #+#    #+#             */
-/*   Updated: 2024/06/17 18:09:10 by antonio-         ###   ########.fr       */
+/*   Updated: 2024/06/18 18:21:11 by antonio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ int	ft_atoi(const char *str)
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		number = number * 10 + (str[i++] - 48);
-		if ((number * sign) > INT_MAX)
+		if ((number * sign) > 2147483647)
 			return (-1);
-		if ((number * sign) < INT_MIN)
+		if ((number * sign) < -2147483648)
 			return (0);
 	}
 	return (number * sign);
