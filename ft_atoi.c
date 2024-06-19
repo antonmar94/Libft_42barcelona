@@ -10,6 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+
+
+
+/*He cagado mierdas con mejor sintaxis que esto panadero*/
+
+
+
 #include "libft.h"
 
 int	ft_atoi(const char *str)
