@@ -6,7 +6,7 @@
 /*   By: antonio- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 18:27:53 by antonio-          #+#    #+#             */
-/*   Updated: 2024/06/17 18:43:08 by antonio-         ###   ########.fr       */
+/*   Updated: 2024/06/25 19:28:52 by antonio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*ft_itoa(int nbr)
 	if (nbr < 0)
 		sign = -1;
 	len = ft_numlen(nbr);
-	res_num = calloc((len + 1), sizeof(char));
+	res_num = malloc(sizeof(char) * (len + 1));
 	if (res_num == NULL)
 		return (NULL);
 	if (nbr < 0)

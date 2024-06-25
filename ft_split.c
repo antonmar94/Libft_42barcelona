@@ -6,7 +6,7 @@
 /*   By: antonio- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 19:37:38 by antonio-          #+#    #+#             */
-/*   Updated: 2024/06/17 19:42:38 by antonio-         ###   ########.fr       */
+/*   Updated: 2024/06/25 19:27:12 by antonio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	**ft_split(char const *s, char c)
 	if (!s)
 		return (0);
 	wcount = wcounter(s, c);
-	str = calloc(wcount + 1,  sizeof(char *));
+	str = malloc(sizeof(char *) * (wcount + 1));
 	if (str == NULL)
 		return (NULL);
 	while (++j < wcount)

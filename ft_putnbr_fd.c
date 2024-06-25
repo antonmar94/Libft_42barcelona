@@ -6,7 +6,7 @@
 /*   By: antonio- <antonio-@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 18:28:16 by antonio-          #+#    #+#             */
-/*   Updated: 2024/06/18 18:30:53 by antonio-         ###   ########.fr       */
+/*   Updated: 2024/06/25 19:30:35 by antonio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,3 @@ void	ft_putnbr_fd(int n, int fd)
 	}
 	ft_putchar_fd(n + '0', fd);
 }
-
