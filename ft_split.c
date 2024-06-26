@@ -6,26 +6,40 @@
 /*   By: antonio- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 19:37:38 by antonio-          #+#    #+#             */
-/*   Updated: 2024/06/25 19:27:12 by antonio-         ###   ########.fr       */
+/*   Updated: 2024/06/26 12:07:23 by antonio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	wcounter(char const *s, char c)
+int	wcounter(char const *str, char c)
 {
 	size_t	i;
 	int		wcount;
 
 	wcount = 0;
 	i = 0;
-	while (i < ft_strlen(s))
+	while (i < ft_strlen(str))
 	{
-		if (s[i] != c && (i == 0 || s[i - 1] == c))
+		if (str[i] != c && (i == 0 || str[i - 1] == c))
 			wcount++;
 		i++;
 	}
 	return (wcount);
+}
+
+char	**free_matrix(char **matrix)
+{
+	char	**matrix_aux;
+
+	matrix_aux = matrix;
+	while (*matrix)
+	{
+		free(*matrix);
+		matrix++;
+	}
+	free(matrix_aux);
+	return (NULL);
 }
 
 char	**ft_split(char const *s, char c)
@@ -34,16 +48,14 @@ char	**ft_split(char const *s, char c)
 	int		j;
 	int		wcount;
 	char	**str;
-	int		a;
+	size_t	a;
 
 	i = -1;
 	j = -1;
-	if (!s)
-		return (0);
 	wcount = wcounter(s, c);
 	str = malloc(sizeof(char *) * (wcount + 1));
 	if (str == NULL)
-		return (NULL);
+		return (str);
 	while (++j < wcount)
 	{
 		a = i + 1;
@@ -52,6 +64,8 @@ char	**ft_split(char const *s, char c)
 		while (s[i] != c && i < ft_strlen(s))
 			i++;
 		str[j] = ft_substr(s, a, i - a);
+		if (!str[j])
+			return (free_matrix(str));
 	}
 	str[j] = 0;
 	return (str);
