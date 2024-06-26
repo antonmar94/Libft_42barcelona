@@ -6,7 +6,7 @@
 #    By: antonio- <antonio-@student.42barcelona.co  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 18:14:54 by antonio-          #+#    #+#              #
-#    Updated: 2024/06/26 16:51:38 by antonio-         ###   ########.fr        #
+#    Updated: 2024/06/26 18:34:37 by antonio-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,21 +30,18 @@ OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
 all: $(NAME)
 
-%.o: %.c
-	@printf "\033[0;33mGenerating libft objects... %-33.33s\r" $@
-	@cc ${FLAGS} -c $< -o $@
 
 $(NAME): $(OBJ)
-	@echo "\n\n\033[0;35mCompiling libft..."
-	@ar rc $(NAME) $^
-	@ranlib $(NAME)
-	@echo "\033[0m"
+	ar rcs $@ $^
 
-bonus: $(NAME) $(OBJ) $(OBJ_BONUS)	
-	@echo "\n\n\033[0;35mCompiling libft..."
-	@ar rc $(NAME) $^
-	@ranlib $(NAME)
-	@echo "\033[0m"
+%.o: %.c
+	$(CC) $(FLAGS) -c $< -o $@
+
+bonus: $(OBJ_BONUS)
+
+$(OBJ_BONUS): $(SRC_BONUS)
+	$(CC) $(FLAGS) -c $< -o $@
+	ar rcs $(NAME) $^
 
 clean:
 	@rm -f $(OBJ) $(OBJ_BONUS)
