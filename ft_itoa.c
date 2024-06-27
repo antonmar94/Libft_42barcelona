@@ -6,11 +6,11 @@
 /*   By: antonio- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 18:27:53 by antonio-          #+#    #+#             */
-/*   Updated: 2024/06/25 19:28:52 by antonio-         ###   ########.fr       */
+/*   Updated: 2024/06/27 14:00:43 by antonio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 static int	ft_numlen(int nbr)
 {
@@ -34,14 +34,15 @@ char	*ft_itoa(int nbr)
 	int		sign;
 
 	sign = 1;
-	if (nbr < 0)
-		sign = -1;
 	len = ft_numlen(nbr);
 	res_num = malloc(sizeof(char) * (len + 1));
 	if (res_num == NULL)
 		return (NULL);
 	if (nbr < 0)
+	{
+		sign = -1;
 		res_num[0] = '-';
+	}
 	else if (nbr == 0)
 		res_num[0] = '0';
 	res_num[len] = '\0';

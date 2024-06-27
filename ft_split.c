@@ -6,29 +6,29 @@
 /*   By: antonio- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 19:37:38 by antonio-          #+#    #+#             */
-/*   Updated: 2024/06/26 12:07:23 by antonio-         ###   ########.fr       */
+/*   Updated: 2024/06/27 14:17:46 by antonio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	wcounter(char const *str, char c)
+static int	wcounter(char const *matrix, char c)
 {
 	size_t	i;
 	int		wcount;
 
 	wcount = 0;
 	i = 0;
-	while (i < ft_strlen(str))
+	while (i < ft_strlen(matrix))
 	{
-		if (str[i] != c && (i == 0 || str[i - 1] == c))
+		if (matrix[i] != c && (i == 0 || matrix[i - 1] == c))
 			wcount++;
 		i++;
 	}
 	return (wcount);
 }
 
-char	**free_matrix(char **matrix)
+static char	**free_matrix(char **matrix)
 {
 	char	**matrix_aux;
 
@@ -47,15 +47,15 @@ char	**ft_split(char const *s, char c)
 	size_t	i;
 	int		j;
 	int		wcount;
-	char	**str;
+	char	**matrix;
 	size_t	a;
 
 	i = -1;
 	j = -1;
 	wcount = wcounter(s, c);
-	str = malloc(sizeof(char *) * (wcount + 1));
-	if (str == NULL)
-		return (str);
+	matrix = malloc(sizeof(char *) * (wcount + 1));
+	if (matrix == NULL)
+		return (matrix);
 	while (++j < wcount)
 	{
 		a = i + 1;
@@ -63,10 +63,10 @@ char	**ft_split(char const *s, char c)
 			a++;
 		while (s[i] != c && i < ft_strlen(s))
 			i++;
-		str[j] = ft_substr(s, a, i - a);
-		if (!str[j])
-			return (free_matrix(str));
+		matrix[j] = ft_substr(s, a, i - a);
+		if (!matrix[j])
+			return (free_matrix(matrix));
 	}
-	str[j] = 0;
-	return (str);
+	matrix[j] = 0;
+	return (matrix);
 }

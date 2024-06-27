@@ -6,7 +6,7 @@
 /*   By: antonio- <antonio-@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 17:00:22 by antonio-          #+#    #+#             */
-/*   Updated: 2024/06/26 17:00:25 by antonio-         ###   ########.fr       */
+/*   Updated: 2024/06/27 12:20:21 by antonio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,6 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 void	ft_lstadd_back(t_list **lst, t_list *new);
-size_t	ft_wordcount(char const *s, char c);
-size_t	ft_desplace(char const *s, char c);
-size_t	ft_lens(char *lens, char c);
-void	ft_putstr_fdnl(char *s, int fd);
-void	ft_putnbr_fdnl(int n, int fd);
 int		ft_strcmp(const char *s1, const char *s2);
 size_t	ft_strcpy(char *dst, const char *src);
 

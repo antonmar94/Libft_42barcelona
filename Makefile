@@ -6,7 +6,7 @@
 #    By: antonio- <antonio-@student.42barcelona.co  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 18:14:54 by antonio-          #+#    #+#              #
-#    Updated: 2024/06/26 18:34:37 by antonio-         ###   ########.fr        #
+#    Updated: 2024/06/27 13:29:51 by antonio-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,35 +20,36 @@ SRC = ft_putstr_fd.c ft_putchar_fd.c ft_strmapi.c ft_itoa.c ft_split.c ft_strtri
 SRC_BONUS = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c ft_lstlast_bonus.c ft_lstadd_back_bonus.c\
 			ft_lstdelone_bonus.c ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c
 
+HEADER = libft.h
 NAME = libft.a
 CFLAGS = -Wall -Werror -Wextra
 CC = cc
 NAME = libft.a
+MAKENAME = Makefile
 FLAGS = -Wall -Wextra -Werror
 OBJ = $(SRC:.c=.o)
 OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
 all: $(NAME)
 
-
 $(NAME): $(OBJ)
 	ar rcs $@ $^
 
-%.o: %.c
+%.o: %.c $(HEADER) $(MAKENAME)
 	$(CC) $(FLAGS) -c $< -o $@
 
-bonus: $(OBJ_BONUS)
+bonus: .$(NAME).bonus
 
-$(OBJ_BONUS): $(SRC_BONUS)
-	$(CC) $(FLAGS) -c $< -o $@
-	ar rcs $(NAME) $^
+.$(NAME).bonus: $(OBJ_BONUS)
+	ar rcs $(NAME) $?
+	touch $@
 
 clean:
 	@rm -f $(OBJ) $(OBJ_BONUS)
 
 fclean: clean
-	@rm -f $(NAME) $(OBJ) $(OBJ_BONUS)
+	@rm -f $(NAME) .$(NAME).bonus $(OBJ) $(OBJ_BONUS)
 
 re: fclean all bonus
 
-.PHONY: all clean fclean re
+.PHONY: all bonus clean fclean re

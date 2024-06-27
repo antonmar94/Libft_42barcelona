@@ -6,13 +6,13 @@
 /*   By: antonio- <antonio-@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 18:40:53 by antonio-          #+#    #+#             */
-/*   Updated: 2024/06/26 11:33:06 by antonio-         ###   ########.fr       */
+/*   Updated: 2024/06/27 14:05:53 by antonio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_sizestr(char const *str)
+static size_t	ft_sizestr(char const *str)
 {
 	size_t	len;
 
@@ -27,7 +27,7 @@ size_t	ft_sizestr(char const *str)
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*res;
-	int		i;
+	size_t	i;
 	size_t	s_len;
 
 	i = 0;
@@ -44,7 +44,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (start >= ft_strlen((char *) s))
 		return (res);
 	s += start;
-	while (i < (int)len && s[i])
+	while (i < len && s[i])
 	{
 		res[i] = s[i];
 		i++;
